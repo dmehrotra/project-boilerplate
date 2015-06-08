@@ -44,7 +44,18 @@ fs = [
                         }
                     ]
 
-                }
+                },
+                name:'scss',
+                type:'folder',
+                path:src+'/scss',
+                contents:[
+                    {
+                        name:'application.scss',
+                        type:'file',
+                        path: src+'/scss/',
+                        contents:''
+                    }
+                ]
             ]
         },
         {
@@ -162,7 +173,6 @@ def build_fs_for(f)
         File.open(f[:path]+f[:name], 'w'){|file| file.write(f[:contents])}
     end
 end
-
 
 fs.each do |f|
     build_fs_for(f)
