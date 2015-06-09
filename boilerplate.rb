@@ -76,10 +76,18 @@ module.exports = function(grunt){
                 }
             }
         },
+        jshint: {
+          files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+          options: {
+            globals: {
+              jQuery: true
+            }
+          }
+        },
         watch:{
             js:{
                 files:['src/js/*.js'],
-                tasks:['uglify:dev']
+                tasks:['uglify:dev', 'jshint']
             },
             css:{
                 files:['src/scss/application.scss'],
@@ -111,6 +119,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.registerTask('default',['uglify:build']);
     grunt.registerTask('dev',['uglify:dev', 'sass:dev']);
@@ -154,6 +163,7 @@ module.exports = function(grunt){
     "grunt": "^0.4.5",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-jshint": "^0.11.2",
     "grunt-sass": "^1.0.0"
   }
 }
